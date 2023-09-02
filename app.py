@@ -16,14 +16,6 @@ app = FastAPI()
 async def index():
     return RedirectResponse(url = "/docs")
 
-@app.get("/train")
-async def training():
-    try:
-        os.system("python main.py")
-        return Response("Training Successful")
-    
-    except Exception as e:
-        return Response(f"Error Occured ! {e}")
     
 
 @app.get("/predict")
@@ -37,8 +29,8 @@ async def predict_route(text):
         raise e
 
 
-if __name__ == "__main__":
-    uvicorn.run(app, host = "0.0.0.0", port = 8080)
+# if __name__ == "__main__":
+#     uvicorn.run(app, host = "0.0.0.0", port = 8080)
     
 
 
