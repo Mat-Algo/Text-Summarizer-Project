@@ -17,5 +17,8 @@ python-box==6.0.2
 ensure==1.0.2
 fastapi==0.78.0
 uvicorn==0.18.3
+gunicorn==19.9.0
+uvloop
+httptools
 Jinja==3.1.2
 -e .
