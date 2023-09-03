@@ -29,7 +29,7 @@ async def training():
     
 
 
-
+#for summary
 @app.post("/predict")
 async def predict_route(text):
     try:
