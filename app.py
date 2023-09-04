@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Request
 import uvicorn
 import sys
 import os
@@ -49,4 +49,4 @@ async def value_error_exception_handler(request: Request, exc: ValueError):
     )
 
 if __name__=="__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8080)
+    uvicorn.run(app, host="0.0.0.0", port=8001)
