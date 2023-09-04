@@ -6,6 +6,7 @@ from fastapi.templating import Jinja2Templates
 from starlette.responses import RedirectResponse
 from fastapi.responses import Response
 from textSummarizer.pipeline.prediction import PredictionPipeline
+from fastapi.responses import JSONResponse
 
 
 text:str = "What is Text Summarization?"
@@ -39,7 +40,13 @@ async def predict_route(text):
         return text
     except Exception as e:
         raise e
-    
+
+@app.exception_handler(ValueError)
+async def value_error_exception_handler(request: Request, exc: ValueError):
+    return JSONResponse(
+        status_code=400,
+        content={"message": str(exc)},
+    )
 
 if __name__=="__main__":
     uvicorn.run(app, host="0.0.0.0", port=8080)
